@@ -1,4 +1,8 @@
+package main;
+
 import java.util.Scanner;
+
+
 class Main {
     public static void main(String[] args) {
         Scanner input= new Scanner(System.in);
@@ -21,7 +25,8 @@ class Main {
             else{
                 System.out.println("ERROR: El numero ingresado no es valido.");
             }
-
         }
+
+
     }
 }
