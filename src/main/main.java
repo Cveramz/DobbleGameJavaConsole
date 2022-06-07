@@ -1,5 +1,5 @@
 package main;
-
+import Juego.*;
 import java.util.Scanner;
 
 
