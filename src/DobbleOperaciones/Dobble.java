@@ -12,7 +12,17 @@ a partir de una carta de muestra, etc.)
  */
 
 public class Dobble {
-    public void testDobble (){
-        System.out.println("CLASE DOBBLE");
+    
+    
+    //Crear metodo que cree un set de cartas.
+    //Entrada: Tamaño de la carta, Cantidad de elementos por carta y array de elementos posibles.
+    //Salida: Array representando el set de cartas.
+    public static String[][] setDeCartas(int cantCartas, int CantElementos, String[] elementosPosibles) {
+        String[][] set = new String[cantCartas][CantElementos];
+        for (int i = 0; i < cantCartas; i++) {
+            set[i] = Card.crearCarta(CantElementos, elementosPosibles);
+        }
+        return set;
     }
+    //Falta hacer un constructor y utilizando otra función que verifique si es valido el set.
 }
