@@ -1,5 +1,6 @@
 package Cartas;
-import java.util.List;
+//import java.util.List;
+//import java.util.ArrayList;
 import java.util.Arrays;
 import java.lang.Math;
 
@@ -10,8 +11,23 @@ realizar con una carta.
  */
 
 public class Card {
-    public void testCard () {
-        System.out.println("CLASE CARD");
+    
+    
+    //FUNCIÓN QUE GENERA UNA CARTA, RECIBIENDO TAMAÑO Y ARREGLO DE ELEMENTOS.
+    //Entrada: Tamaño de la carta, y array de elementos posibles.
+    //Salida: Array representando la carta, que contiene tamaño cantidad de elementos.
+    public static String[] crearCarta(int tamano, String[] elementosPosibles) {
+        String[] carta = new String[tamano];
+        String elemento;
+        for (int i = 0; i < tamano; i++) {
+            elemento = elementosPosibles[(int) (Math.random() * elementosPosibles.length)];
+            //verificar que el elemento no se repita.
+            while (Arrays.asList(carta).contains(elemento)) {
+                elemento = elementosPosibles[(int) (Math.random() * elementosPosibles.length)];
+            }
+            carta[i] = elemento;
+        }
+        return carta;
     }
     
     //FUNCIÓN OBTENER CANTIDAD DE CARTAS, ESTO ES UTILIZANDO LA FUNCIÓN DE COMBINACIÓN SIN REPETICIÓN
