@@ -1,4 +1,8 @@
 package Cartas;
+import java.util.List;
+import java.util.Arrays;
+import java.lang.Math;
+
 
 /*
 Representa una carta y por tanto todas las operaciones que se pueden
