@@ -16,10 +16,13 @@ class Main {
             System.out.println("[2] Registrar jugador");
             System.out.println("[3] Jugar");
             System.out.println("[4] Visualizar estado completo del juego");
+            System.out.println("[5] Probar funcionalidades manualmente");
+            System.out.println("[6] Salir");
+            
             int rMenu =input.nextInt();
             System.out.println("Respuesta: "+rMenu);
             //hacer un if para verificar si el numero es valido.
-            if(rMenu>=1 && rMenu<=4){
+            if(rMenu>=1 && rMenu<=6){
                 verifyMain=1;
             }
             else{
