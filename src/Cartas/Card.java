@@ -3,8 +3,6 @@ package Cartas;
 //import java.util.ArrayList;
 import java.util.Arrays;
 import java.lang.Math;
-
-
 /*
 Representa una carta y por tanto todas las operaciones que se pueden
 realizar con una carta.
@@ -12,8 +10,7 @@ realizar con una carta.
 
 public class Card {
     
-    
-    //FUNCIÓN QUE GENERA UNA CARTA, RECIBIENDO TAMAÑO Y ARREGLO DE ELEMENTOS.
+    //crear metodo que cree una carta.
     //Entrada: Tamaño de la carta, y array de elementos posibles.
     //Salida: Array representando la carta, que contiene tamaño cantidad de elementos.
     public static String[] crearCarta(int tamano, String[] elementosPosibles) {
@@ -29,30 +26,25 @@ public class Card {
         }
         return carta;
     }
-    
-    //FUNCIÓN OBTENER CANTIDAD DE CARTAS, ESTO ES UTILIZANDO LA FUNCIÓN DE COMBINACIÓN SIN REPETICIÓN
-    //ENTRADA: NUMERO DE TAMAÑO DE CARTAS Y ARREGLO CON LOS ELEMENTOS POSIBLES.
-    //SALIDA: NUMERO DE CARTAS POSIBLES.
-    public static int cantidadDeCartas(int tamano, String[] elementosPosibles) {
-        int cantidadDeCartas = 0;
-        //Vamos a usar la formula de combinación sin repeticion
-        //Cantidad de elementos posibles = (m!)/(n!*(m-n)!)
-        //donde m= len de elementosPosibles y n=tamano
-        int m=elementosPosibles.length;
-        int factorialM=1;
-        for (int i = 1; i <= m; i++) {
-            factorialM=factorialM*i;
+        
+    //Función para verificar si se contiene un elemento en un array.
+    //Entrada: Una carta y un elemento a buscar.
+    //Salida: Un booleano indicando si el elemento se encuentra en la carta.
+    public static int contieneElemento(String[] carta, String elemento) {
+        for (int i = 0; i < carta.length; i++) {
+            if (carta[i].equals(elemento)) {
+                return 1;
+            }
         }
-        int n=tamano;
-        int factorialN=1;
-        for (int i = 1; i <= n; i++) {
-            factorialN=factorialN*i;
-        }
-        int factorialMN=1;
-        for (int i = 1; i <= (m-n); i++) {
-            factorialMN=factorialMN*i;
-        }
-        cantidadDeCartas=factorialM/(factorialN*factorialMN);
-        return cantidadDeCartas;
+        return 0;
     }
+
+    //crear un metodo que reciba un arreglo de elementosPosibles y que devuelva la cantidad de cartas que se pueden crear
+    //considerando que no se pueden repetir elementos
+    public static int cantidadDeCartas(int tamano, String[] elementosPosibles) {
+        //vamos a usar la formula n^2+n+1
+        //Donde n= tamano
+        return ((tamano*tamano)+tamano+1);
+    }
+    
 }
