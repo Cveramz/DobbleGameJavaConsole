@@ -28,7 +28,7 @@ public class Dobble {
     }
 
 
-    //Función para contar la cantidad de elementos que se repiten entre dos cartas.
+    //Metodo para contar la cantidad de elementos que se repiten entre dos cartas.
     //Entrada: Dos cartas.
     //Salida: Un entero indicando la cantidad de elementos que se repiten.
     public static int cantidadRepetidosPar(String[] Carta1, String[] Carta2) {
@@ -64,7 +64,7 @@ public class Dobble {
         return sumaRepetidos;
     }
 
-    //Función para encontrar el elemento repetido. Este se usará cuando CantidadRepetidosPar sea igual a 1.
+    //Metodo para encontrar el elemento repetido. Este se usará cuando CantidadRepetidosPar sea igual a 1.
     //Entrada: Dos cartas.
     //Salida: Un string indicando el elemento repetido.
     public static String getRepetido(String[] Carta1, String[] Carta2) {
@@ -101,7 +101,7 @@ public class Dobble {
         return "";
     }
 
-    //Función arreglar el set de cartas.
+    //Metodo arreglar el set de cartas.
     //Entrada: Un set de cartas.
     //Salida: Un set de cartas arregladas.
     public static String[][] arreglarSet(String[][] set, String[] elementosPosibles) {

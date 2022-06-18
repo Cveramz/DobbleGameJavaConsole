@@ -23,6 +23,7 @@ public class DobbleGame {
     int numRonda;
     String ModoJuego;
 
+    //Constructor de la clase DobbleGame
 
     public DobbleGame() {
         this.nombreJugador = "INVITADO";
@@ -35,6 +36,10 @@ public class DobbleGame {
         this.numRonda = 0;
         
     }
+
+    //Metodo verificar información del objeto.
+    //Entrada: Nada
+    //Salida: Nada
 
     public void verificarEstado(){
         System.out.println("=========================");
@@ -49,6 +54,9 @@ public class DobbleGame {
         System.out.println("=========================");
     }
 
+    //Metodo para crear juego
+    //Entrada: Nada
+    //Salida: Nada
     public void iniciarJuego() {
         this.estadoJuego = true;
         //Inicia el juego
@@ -110,6 +118,9 @@ public class DobbleGame {
 
     }
 
+    //Metodo para iniciar juego jugador vs CPU
+    //Entrada: Nada
+    //Salida: Nada
     public void jugadorVsCPU() {
         //Juego jugador vs CPU
         Scanner respuesta= new Scanner(System.in);
@@ -152,6 +163,10 @@ public class DobbleGame {
 
 
     }
+
+    //Metodo para jugar jugador vs CPU
+    //Entrada: Dificultad
+    //Salida: Nada
     public void jugarJugadorVsCpu(int dificultad) {
         String[][] cardSet = new String[this.cantJugadores][cantElementos];
         cardSet = this.cardSet;

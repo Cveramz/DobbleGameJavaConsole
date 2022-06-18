@@ -4,10 +4,12 @@ import Jugador.*;
 import Juego.*;
 import java.util.Scanner;
 
+
+//Clase menu, este se usará para tener algunos metodos separados.
 class opcionesMenu{
-    public static void crearJuego(){
-        System.out.println("CrearJuego");
-    }
+    //Metodo para registrar un jugador.
+    //Entrada: Nada
+    //Salida: jugador
     public static Player registrarJugador(){
         System.out.println("registrarJugador");
         Scanner input= new Scanner(System.in);
@@ -20,10 +22,15 @@ class opcionesMenu{
     }
 }
 
+//clase menu para elegir una opción del menu y dentro del mismo realizar ciertas acciones.
 class menu{
+    //atributos por defecto
     String nombreJugador = "INVITADO";
     DobbleGame juego;
 
+    //Metodo para elegir una opción del menu.
+    //Entrada: Nada
+    //Salida: Nada
     public void menuPrincipal(){
         DobbleGame juego=new DobbleGame();
         this.juego = juego;
@@ -112,6 +119,7 @@ class menu{
     }
 }
 
+//Clase main, esta clase se usará para iniciar el programa.
 class Main {
     public static void main(String[] args) {
         menu m = new menu();

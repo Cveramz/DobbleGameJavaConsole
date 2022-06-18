@@ -41,10 +41,10 @@ public class Card {
 
     //crear un metodo que reciba un arreglo de elementosPosibles y que devuelva la cantidad de cartas que se pueden crear
     //considerando que no se pueden repetir elementos
-    public static int cantidadDeCartas(int tamano, String[] elementosPosibles) {
+    /*public static int cantidadDeCartas(int tamano, String[] elementosPosibles) {
         //vamos a usar la formula n^2+n+1
         //Donde n= tamano
         return ((tamano*tamano)+tamano+1);
-    }
+    }*/
     
 }
