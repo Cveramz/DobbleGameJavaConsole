@@ -1,7 +1,6 @@
 package DobbleOperaciones;
 import Cartas.*;
 
-import java.util.Arrays;
 //import java.util.List;
 //import java.util.ArrayList;
 
@@ -57,6 +56,7 @@ public class Dobble {
                 }
             }
         }
+        //crear suma de repetidos.
         int sumaRepetidos = 0;
         for (int i = 0; i < elementosRepetidos.length; i++) {
             sumaRepetidos += elementosRepetidos[i];
@@ -123,7 +123,6 @@ public class Dobble {
             //Si es cero o mayor a 1, debemos cambiar la carta i+1 hasta que cantidadRepetidosPar sea 1.
             int comprobador = 0;
             while (comprobador == 0){
-                System.out.println("Arreglando carta 2");
                 set[1] = Card.crearCarta(set[0].length, elementosPosibles);
                 if (cantidadRepetidosPar(set[0], set[1]) == 1) {
                     comprobador = 1;
@@ -133,21 +132,12 @@ public class Dobble {
         //si ya está arreglado guardaremos el elemento repetido en elementoARepetir.
         if (cantidadRepetidosPar(set[0], set[1]) == 1) {
             //obtener el elemento repetido.
-            System.out.println("Obteniendo elemento repetido");
             elementoARepetir = getRepetido(set[0], set[1]);
-            System.out.println("Elemento a repetir: " + elementoARepetir);
         }
-        System.out.println("========");
-        System.out.println("Carta 1: " + Arrays.toString(set[0]));
-        System.out.println("Carta 2: " + Arrays.toString(set[1]));
-        System.out.println("========");
-        System.out.println("Carta 2 arreglada");
-        String[] carta2 = set[1];
-        System.out.println("Carta 1: " + Arrays.toString(carta2));
+
 
         //ahora iremos verificando entre pares de carta.
         for (int i = 0; i < set.length-1; i++) {
-            System.out.println("Verificando par " + (i+1));
             if (cantidadRepetidosPar(set[i], set[i+1]) == 0 || cantidadRepetidosPar(set[i], set[i+1])>1) {
                 //Si es cero o mayor a 1, debemos cambiar la carta i+1 hasta que cantidadRepetidosPar sea 1.
                 int comprobador = 0;
@@ -172,27 +162,21 @@ public class Dobble {
             }
         }
 
-        //retornar el set arreglado.
-        System.out.println("****************");
-        System.out.println("Set arreglado");
-        for (int i = 0; i < set.length; i++) {
-            System.out.println("Carta " + (i+1) + ": " + Arrays.toString(set[i]));
-        }
-        System.out.println("****************");
+
         return set;
     }
 
 
     //Generar un set de cartas.
-    //Entrada: Nada.
+    //Entrada: Cantidad de cartas, cantidad elementos.
     //Salida: Un set de cartas.
-    public static String[][] generarSet(){
+    public static String[][] generarSet(int tamanoSet, int cantidadElementos){
         String[] elementosPosibles = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
-        int tamanoCartas = 6;
-        int cantidadElementos = 4;
-        String[][] set = new String[tamanoCartas][];
+        //int tamanoCartas = 5;
+        //int cantidadElementos = 4;
+        String[][] set = new String[tamanoSet][];
 
-        set = setDeCartas(tamanoCartas, cantidadElementos, elementosPosibles);
+        set = setDeCartas(tamanoSet, cantidadElementos, elementosPosibles);
         set = arreglarSet(set, elementosPosibles);
         return set;
     }

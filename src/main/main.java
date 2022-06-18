@@ -1,9 +1,8 @@
 package main;
 //import Juego.*;
 import Jugador.*;
-import DobbleOperaciones.*;
+import Juego.*;
 import java.util.Scanner;
-import java.util.Arrays;
 
 class opcionesMenu{
     public static void crearJuego(){
@@ -19,32 +18,15 @@ class opcionesMenu{
         //input.close();
         return jugador;
     }
-    public static void iniciarJuego(){
-        System.out.println("iniciarJuego");
-    }
-    public static void vizualizarEstado(){
-        System.out.println("vizualizarEstado");
-    }
-    //Metodo para probar funcionalidades manualmente
-    //Entrada: Nada
-    //Salida: Nada
-    public static void testMode(){
-        System.out.println("testMode");
-        String[][] set = Dobble.generarSet();
-        for (int i = 0; i < set.length; i++) {
-            System.out.println("Carta " + (i+1) + ": " + Arrays.toString(set[i]));
-        }   
-        
-    }
 }
 
 class menu{
     String nombreJugador = "INVITADO";
+    DobbleGame juego;
 
-    //Metodo para mostrar el menu de opciones y recibir opciones.
-    //Entrada: Nada
-    //Salida: Nada
     public void menuPrincipal(){
+        DobbleGame juego=new DobbleGame();
+        this.juego = juego;
         Scanner input= new Scanner(System.in);
         int verifyMain=0;
         int rMenu=0;
@@ -54,15 +36,20 @@ class menu{
         verifyMain=0;
         rMenu=0;
         while(verifyMain==0){
+            System.out.println("");
+            System.out.println("====================");
+            System.out.println("¡BIENVENIDO A DOBBLE!");
+            System.out.println("====================");
             System.out.println("###### MENU ######");
             System.out.println("## REGISTRADO COMO: " + this.nombreJugador + " ##");
+            System.out.println("");
             System.out.println("ESCOJA UNA OPCION:");
-            System.out.println("[1] Crear un juego");
-            System.out.println("[2] Registrar jugador");
-            System.out.println("[3] Jugar");
+            System.out.println("[1] Registrar jugador");
+            System.out.println("[2] Crear un juego");
+            System.out.println("[3] Jugar una ronda de juego iniciado");
             System.out.println("[4] Visualizar estado completo del juego");
-            System.out.println("[5] Probar metodos manualmente");
-            System.out.println("[6] Salir");
+            System.out.println("[5] Salir");
+            System.out.println("");
             rMenu =input.nextInt();
             //hacer un if para verificar si el numero es valido.
             if(rMenu>=1 && rMenu<=6){
@@ -76,22 +63,44 @@ class menu{
         System.out.println("Respuesta: "+rMenu);
         switch(rMenu){
             case 1:
-                opcionesMenu.crearJuego();
-                break;
-            case 2:
                 Player jugador=opcionesMenu.registrarJugador();
                 this.nombreJugador=jugador.getNombre();
                 break;
+
+            case 2:
+                Scanner entrada= new Scanner(System.in);
+                System.out.println("Cantidad de jugadores CPU: ");
+                //La cantidad de jugadores debe ser mayor a 1.
+                int cantJugadores=entrada.nextInt();
+                if (cantJugadores>0){
+                    System.out.println("Cantidad de elementos por carta: ");
+                    int cantElementos=entrada.nextInt();
+                    this.juego.nombreJugador= this.nombreJugador;
+                    this.juego.cantJugadores= cantJugadores;
+                    this.juego.cantElementos = cantElementos;
+                    juego.iniciarJuego();
+                }
+                else{
+                    System.out.println("ERROR: La cantidad de jugadores CPU debe ser mayor a 0");
+                }
+                    break;
             case 3:
-                opcionesMenu.iniciarJuego();
+                if (this.juego.estadoJuego == false){
+                    System.out.println("¡No se ha iniciado un juego!");
+                }
+                else{
+                    System.out.println("Reanudando...");
+                    juego.jugarJugadorVsCpu(2);
+                }
                 break;
             case 4:
-                opcionesMenu.iniciarJuego();
+                if (this.juego.estadoJuego == false){
+                    System.out.println("¡No se ha iniciado un juego!");
+                }else{
+                    this.juego.verificarEstado();
+                }
                 break;
             case 5:
-                opcionesMenu.testMode();
-                break;
-            case 6:
                 //terminar programa.
                 cerrar=1;
                 input.close();
@@ -104,7 +113,6 @@ class menu{
 }
 
 class Main {
-    //Metodo para iniciar el programa.
     public static void main(String[] args) {
         menu m = new menu();
         m.menuPrincipal();
